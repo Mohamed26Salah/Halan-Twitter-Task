@@ -10,6 +10,7 @@
 		AB3333C22EF43EB9007CA049 /* HalanTwitterFeature in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C12EF43EB9007CA049 /* HalanTwitterFeature */; };
 		AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */; };
 		AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */; };
+		AB3333CD2EF44577007CA049 /* TwitterManager in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333CC2EF44577007CA049 /* TwitterManager */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 				HalanTwitterFeature,
 				HalanTwitterRepositories,
 				HalanTwitterUseCases,
+				TwitterManager,
 			);
 			target = AB3333842EF42B1C007CA049 /* Halan-Twitter-Task */;
 		};
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3333CD2EF44577007CA049 /* TwitterManager in Frameworks */,
 				AB3333C22EF43EB9007CA049 /* HalanTwitterFeature in Frameworks */,
 				AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */,
 				AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */,
@@ -154,6 +157,7 @@
 				AB3333C12EF43EB9007CA049 /* HalanTwitterFeature */,
 				AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */,
 				AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */,
+				AB3333CC2EF44577007CA049 /* TwitterManager */,
 			);
 			productName = "Halan-Twitter-Task";
 			productReference = AB3333852EF42B1C007CA049 /* Halan-Twitter-Task.app */;
@@ -635,6 +639,10 @@
 		AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HalanTwitterUseCases;
+		};
+		AB3333CC2EF44577007CA049 /* TwitterManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TwitterManager;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
