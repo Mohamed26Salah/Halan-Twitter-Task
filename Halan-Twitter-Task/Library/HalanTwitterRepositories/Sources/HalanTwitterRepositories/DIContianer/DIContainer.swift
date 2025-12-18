@@ -8,7 +8,9 @@
 import Factory
 
 public extension Container {
-//    var freshChatManager: Factory<ManagerProtocol> {
-//        Factory(self) { Manager() }
-//    }
+    static func registerRepositoryImplementations() {
+//        Container.shared.ManagerProtocol.register {
+//            ManagerProtocol()
+//        }
+    }
 }
