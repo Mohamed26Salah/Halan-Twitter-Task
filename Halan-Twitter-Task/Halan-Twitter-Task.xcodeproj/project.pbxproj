@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AB3333C22EF43EB9007CA049 /* HalanTwitterFeature in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C12EF43EB9007CA049 /* HalanTwitterFeature */; };
+		AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */; };
+		AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		AB3333932EF42B1E007CA049 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,6 +35,18 @@
 		AB33339C2EF42B1E007CA049 /* Halan-Twitter-TaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Halan-Twitter-TaskUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		AB3333BD2EF43E24007CA049 /* Exceptions for "Library" folder in "Halan-Twitter-Task" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HalanTwitterFeature,
+				HalanTwitterRepositories,
+				HalanTwitterUseCases,
+			);
+			target = AB3333842EF42B1C007CA049 /* Halan-Twitter-Task */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		AB3333872EF42B1C007CA049 /* Halan-Twitter-Task */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -45,6 +63,14 @@
 			path = "Halan-Twitter-TaskUITests";
 			sourceTree = "<group>";
 		};
+		AB3333BC2EF43E15007CA049 /* Library */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				AB3333BD2EF43E24007CA049 /* Exceptions for "Library" folder in "Halan-Twitter-Task" target */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +78,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3333C22EF43EB9007CA049 /* HalanTwitterFeature in Frameworks */,
+				AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */,
+				AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +104,11 @@
 		AB33337C2EF42B1C007CA049 = {
 			isa = PBXGroup;
 			children = (
+				AB3333BC2EF43E15007CA049 /* Library */,
 				AB3333872EF42B1C007CA049 /* Halan-Twitter-Task */,
 				AB3333952EF42B1E007CA049 /* Halan-Twitter-TaskTests */,
 				AB33339F2EF42B1E007CA049 /* Halan-Twitter-TaskUITests */,
+				AB3333C02EF43EB9007CA049 /* Frameworks */,
 				AB3333862EF42B1C007CA049 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +121,13 @@
 				AB33339C2EF42B1E007CA049 /* Halan-Twitter-TaskUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AB3333C02EF43EB9007CA049 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,9 +147,13 @@
 			);
 			fileSystemSynchronizedGroups = (
 				AB3333872EF42B1C007CA049 /* Halan-Twitter-Task */,
+				AB3333BC2EF43E15007CA049 /* Library */,
 			);
 			name = "Halan-Twitter-Task";
 			packageProductDependencies = (
+				AB3333C12EF43EB9007CA049 /* HalanTwitterFeature */,
+				AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */,
+				AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */,
 			);
 			productName = "Halan-Twitter-Task";
 			productReference = AB3333852EF42B1C007CA049 /* Halan-Twitter-Task.app */;
@@ -405,6 +447,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +480,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +622,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AB3333C12EF43EB9007CA049 /* HalanTwitterFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HalanTwitterFeature;
+		};
+		AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HalanTwitterRepositories;
+		};
+		AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HalanTwitterUseCases;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AB33337D2EF42B1C007CA049 /* Project object */;
 }
