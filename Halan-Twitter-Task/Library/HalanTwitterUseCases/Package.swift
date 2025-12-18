@@ -15,11 +15,19 @@ let package = Package(
             targets: ["HalanTwitterUseCases"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+//        .package(path: "../../ExtensionsPackages/UIKitExtensionsSPM")
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "HalanTwitterUseCases"
+            name: "HalanTwitterUseCases",
+            dependencies: [
+                .product(name: "Factory", package: "Factory"),
+//                .product(name: "UIKitExtensionsSPM", package: "UIKitExtensionsSPM")
+            ]
         ),
         .testTarget(
             name: "HalanTwitterUseCasesTests",
