@@ -15,20 +15,11 @@ let package = Package(
             targets: ["CoreUI"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/SwiftGen/SwiftGenPlugin", from: "6.6.2")
-    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CoreUI",
-            resources: [
-                .process("Assets/Assets.xcassets"),
-            ],
-            plugins: [
-              .plugin(name: "SwiftGenPlugin", package: "SwiftGenPlugin"),
-            ]
+            name: "CoreUI"
         ),
         .testTarget(
             name: "CoreUITests",
