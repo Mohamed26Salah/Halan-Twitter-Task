@@ -17,6 +17,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+        .package(path: "../CoreStorage"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -25,6 +26,7 @@ let package = Package(
             name: "TwitterManager",
             dependencies: [
                 .product(name: "Factory", package: "Factory"),
+                .product(name: "CoreStorage", package: "CoreStorage"),
             ]
         ),
         .testTarget(

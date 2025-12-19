@@ -10,7 +10,7 @@ import Factory
 
 /// Protocol for authenticating a user with Twitter
 public protocol AuthenticateUserUseCaseProtocol {
-    func execute() async throws -> String
+    func execute() async throws
 }
 
 /// Use case for authenticating a user with Twitter
@@ -18,8 +18,8 @@ public class AuthenticateUserUseCase: AuthenticateUserUseCaseProtocol {
     @Injected(\.twitterAuthRepository) private var authRepository
 
     // MARK: - Public Methods
-    public func execute() async throws -> String {
-        return try await authRepository.authenticate()
+    public func execute() async throws {
+        try await authRepository.authenticate()
     }
 }
 

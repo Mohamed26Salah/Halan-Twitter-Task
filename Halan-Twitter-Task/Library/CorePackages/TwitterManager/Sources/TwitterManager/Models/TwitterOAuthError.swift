@@ -16,6 +16,8 @@ public enum TwitterOAuthError: LocalizedError {
     case tokenExchangeFailed(String)
     case httpError(Int)
     case userCancelled
+    case refreshTokenNotFound
+    case tokenRefreshFailed(String)
     
     public var errorDescription: String? {
         switch self {
@@ -33,6 +35,10 @@ public enum TwitterOAuthError: LocalizedError {
             return "HTTP error: \(code)"
         case .userCancelled:
             return "User cancelled authentication"
+        case .refreshTokenNotFound:
+            return "Refresh token not found. Please authenticate again."
+        case .tokenRefreshFailed(let message):
+            return "Token refresh failed: \(message)"
         }
     }
 }

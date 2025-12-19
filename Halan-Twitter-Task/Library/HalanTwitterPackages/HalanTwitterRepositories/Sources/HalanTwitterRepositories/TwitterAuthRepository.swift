@@ -14,8 +14,8 @@ public class TwitterAuthRepository: TwitterAuthRepositoryProtocol {
     @Injected(\.twitterOAuthManager) private var oauthManager
 
     // MARK: - Public Methods
-    public func authenticate() async throws -> String {
-        return try await oauthManager.authenticate()
+    public func authenticate() async throws {
+        try await oauthManager.authenticate()
     }
 }
 

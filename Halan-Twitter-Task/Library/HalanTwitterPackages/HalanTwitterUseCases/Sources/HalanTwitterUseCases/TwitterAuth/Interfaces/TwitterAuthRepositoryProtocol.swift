@@ -9,5 +9,5 @@ import Foundation
 
 /// Protocol for Twitter authentication repository
 public protocol TwitterAuthRepositoryProtocol {
-    func authenticate() async throws -> String
+    func authenticate() async throws
 }

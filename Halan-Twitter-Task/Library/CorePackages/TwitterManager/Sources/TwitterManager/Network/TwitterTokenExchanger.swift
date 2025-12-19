@@ -14,7 +14,13 @@ public protocol TwitterTokenExchangerProtocol {
         clientSecret: String,
         redirectURI: String,
         codeVerifier: String
-    ) async throws -> String
+    ) async throws -> TokenResponse
+    
+    func refreshToken(
+        refreshToken: String,
+        clientId: String,
+        clientSecret: String
+    ) async throws -> TokenResponse
 }
 
 /// Handles the exchange of authorization code for access token
@@ -33,7 +39,7 @@ public struct TwitterTokenExchanger: TwitterTokenExchangerProtocol {
     ///   - clientSecret: OAuth 2.0 client secret
     ///   - redirectURI: Callback URL used in authorization
     ///   - codeVerifier: PKCE code verifier
-    /// - Returns: Access token
+    /// - Returns: TokenResponse containing access token, refresh token, and expiration
     /// - Throws: TwitterOAuthError if exchange fails
     public func exchangeCodeForToken(
         code: String,
@@ -41,7 +47,7 @@ public struct TwitterTokenExchanger: TwitterTokenExchangerProtocol {
         clientSecret: String,
         redirectURI: String,
         codeVerifier: String
-    ) async throws -> String {
+    ) async throws -> TokenResponse {
         guard let url = URL(string: tokenEndpoint) else {
             throw TwitterOAuthError.invalidURL
         }
@@ -71,6 +77,52 @@ public struct TwitterTokenExchanger: TwitterTokenExchangerProtocol {
             .joined(separator: "&")
             .data(using: .utf8)
         
+        return try await performTokenRequest(request: request)
+    }
+    
+    /// - Parameters:
+    ///   - refreshToken: The refresh token to use
+    ///   - clientId: OAuth 2.0 client ID
+    ///   - clientSecret: OAuth 2.0 client secret
+    /// - Returns: TokenResponse containing new access token, refresh token, and expiration
+    /// - Throws: TwitterOAuthError if refresh fails
+    public func refreshToken(
+        refreshToken: String,
+        clientId: String,
+        clientSecret: String
+    ) async throws -> TokenResponse {
+        guard let url = URL(string: tokenEndpoint) else {
+            throw TwitterOAuthError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        // Create Basic Auth header (client_id:client_secret base64 encoded)
+        let credentials = "\(clientId):\(clientSecret)"
+        if let credentialsData = credentials.data(using: .utf8) {
+            let base64Credentials = credentialsData.base64EncodedString()
+            request.setValue("Basic \(base64Credentials)", forHTTPHeaderField: "Authorization")
+        }
+        
+        // Build form-encoded body for refresh token request
+        let bodyParams = [
+            "refresh_token": refreshToken,
+            "grant_type": "refresh_token"
+        ]
+        
+        request.httpBody = bodyParams
+            .map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")" }
+            .joined(separator: "&")
+            .data(using: .utf8)
+        
+        return try await performTokenRequest(request: request)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func performTokenRequest(request: URLRequest) async throws -> TokenResponse {
         do {
             let (data, response) = try await urlSession.data(for: request)
             
@@ -88,13 +140,19 @@ public struct TwitterTokenExchanger: TwitterTokenExchangerProtocol {
                 throw TwitterOAuthError.invalidResponse
             }
             
-            return accessToken
+            let refreshToken = json["refresh_token"] as? String
+            let expiresIn = json["expires_in"] as? Int ?? 7200 // Default to 2 hours if not provided
+            
+            return TokenResponse(
+                accessToken: accessToken,
+                refreshToken: refreshToken,
+                expiresIn: expiresIn
+            )
         } catch {
             throw error
         }
     }
     
-    // MARK: - Private Methods
     private func extractErrorMessage(from data: Data?) -> String {
         guard let data = data,
               let errorData = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
