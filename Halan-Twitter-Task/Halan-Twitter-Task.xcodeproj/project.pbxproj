@@ -12,6 +12,7 @@
 		AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */; };
 		AB3333CD2EF44577007CA049 /* TwitterManager in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333CC2EF44577007CA049 /* TwitterManager */; };
 		AB3335A12EF5E0A2007CA049 /* CoreStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB3335A02EF5E0A2007CA049 /* CoreStorage */; };
+		ABA710FB2EF5ECD9009D034F /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = ABA710FA2EF5ECD9009D034F /* CoreUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				CorePackages/CoreStorage,
+				CorePackages/CoreUI,
 				CorePackages/TwitterManager,
 				FeaturePackages/HalanTwitterFeature,
 				HalanTwitterPackages/HalanTwitterRepositories,
@@ -87,6 +89,7 @@
 				AB3335A12EF5E0A2007CA049 /* CoreStorage in Frameworks */,
 				AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */,
 				AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */,
+				ABA710FB2EF5ECD9009D034F /* CoreUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +165,7 @@
 				AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */,
 				AB3333CC2EF44577007CA049 /* TwitterManager */,
 				AB3335A02EF5E0A2007CA049 /* CoreStorage */,
+				ABA710FA2EF5ECD9009D034F /* CoreUI */,
 			);
 			productName = "Halan-Twitter-Task";
 			productReference = AB3333852EF42B1C007CA049 /* Halan-Twitter-Task.app */;
@@ -651,6 +655,10 @@
 		AB3335A02EF5E0A2007CA049 /* CoreStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CoreStorage;
+		};
+		ABA710FA2EF5ECD9009D034F /* CoreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
