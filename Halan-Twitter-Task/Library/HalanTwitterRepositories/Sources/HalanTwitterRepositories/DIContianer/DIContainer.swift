@@ -6,11 +6,13 @@
 //
 
 import Factory
+import TwitterManager
+import HalanTwitterUseCases
 
 public extension Container {
     static func registerRepositoryImplementations() {
-//        Container.shared.ManagerProtocol.register {
-//            ManagerProtocol()
-//        }
+        Container.shared.twitterAuthRepository.register {
+            TwitterAuthRepository()
+        }
     }
 }

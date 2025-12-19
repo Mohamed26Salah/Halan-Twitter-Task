@@ -8,8 +8,8 @@
 import Factory
 
 public extension Container {
-//    var Manager: Factory<ManagerProtocol> {
-//        Factory(self) { fatalError("Implementation for ManagerProtocol must be provided by higher layer")
-//        }
-//    }
+    var twitterAuthRepository: Factory<TwitterAuthRepositoryProtocol> {
+        Factory(self) { fatalError("Implementation for TwitterAuthRepositoryProtocol must be provided by higher layer")
+        }
+    }
 }

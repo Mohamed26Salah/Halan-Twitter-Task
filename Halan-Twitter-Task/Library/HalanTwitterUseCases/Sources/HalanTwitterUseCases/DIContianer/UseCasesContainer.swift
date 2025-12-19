@@ -8,7 +8,10 @@
 import Factory
 
 public extension Container {
-//    var freshChatManager: Factory<ManagerProtocol> {
-//        Factory(self) { Manager() }
-//    }
+    /// Authenticate User Use Case factory
+    var authenticateUserUseCase: Factory<AuthenticateUserUseCaseProtocol> {
+        Factory(self) {
+            AuthenticateUserUseCase()
+        }
+    }
 }

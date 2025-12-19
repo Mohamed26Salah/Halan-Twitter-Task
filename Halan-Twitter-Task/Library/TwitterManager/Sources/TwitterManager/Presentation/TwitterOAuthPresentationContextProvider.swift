@@ -10,7 +10,6 @@ import AuthenticationServices
 import UIKit
 
 /// Protocol for providing presentation context for OAuth authentication
-@MainActor
 public protocol TwitterOAuthPresentationContextProviding {
     func presentationAnchor() -> ASPresentationAnchor
 }
@@ -29,7 +28,6 @@ public struct TwitterOAuthPresentationContextProvider: TwitterOAuthPresentationC
         if let anchor = anchor {
             return anchor
         }
-        
         if let window = UIApplication.shared
             .connectedScenes
             .compactMap({ $0 as? UIWindowScene })
@@ -42,4 +40,6 @@ public struct TwitterOAuthPresentationContextProvider: TwitterOAuthPresentationC
         return UIWindow()
     }
 }
+
+
 
