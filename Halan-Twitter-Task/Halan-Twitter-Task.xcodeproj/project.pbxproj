@@ -11,6 +11,7 @@
 		AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */; };
 		AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */; };
 		AB3333CD2EF44577007CA049 /* TwitterManager in Frameworks */ = {isa = PBXBuildFile; productRef = AB3333CC2EF44577007CA049 /* TwitterManager */; };
+		AB3335A12EF5E0A2007CA049 /* CoreStorage in Frameworks */ = {isa = PBXBuildFile; productRef = AB3335A02EF5E0A2007CA049 /* CoreStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +41,11 @@
 		AB3333BD2EF43E24007CA049 /* Exceptions for "Library" folder in "Halan-Twitter-Task" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				HalanTwitterFeature,
-				HalanTwitterRepositories,
-				HalanTwitterUseCases,
-				TwitterManager,
+				CorePackages/CoreStorage,
+				CorePackages/TwitterManager,
+				FeaturePackages/HalanTwitterFeature,
+				HalanTwitterPackages/HalanTwitterRepositories,
+				HalanTwitterPackages/HalanTwitterUseCases,
 			);
 			target = AB3333842EF42B1C007CA049 /* Halan-Twitter-Task */;
 		};
@@ -82,6 +84,7 @@
 			files = (
 				AB3333CD2EF44577007CA049 /* TwitterManager in Frameworks */,
 				AB3333C22EF43EB9007CA049 /* HalanTwitterFeature in Frameworks */,
+				AB3335A12EF5E0A2007CA049 /* CoreStorage in Frameworks */,
 				AB3333C62EF43EC0007CA049 /* HalanTwitterUseCases in Frameworks */,
 				AB3333C42EF43EBD007CA049 /* HalanTwitterRepositories in Frameworks */,
 			);
@@ -158,6 +161,7 @@
 				AB3333C32EF43EBD007CA049 /* HalanTwitterRepositories */,
 				AB3333C52EF43EC0007CA049 /* HalanTwitterUseCases */,
 				AB3333CC2EF44577007CA049 /* TwitterManager */,
+				AB3335A02EF5E0A2007CA049 /* CoreStorage */,
 			);
 			productName = "Halan-Twitter-Task";
 			productReference = AB3333852EF42B1C007CA049 /* Halan-Twitter-Task.app */;
@@ -643,6 +647,10 @@
 		AB3333CC2EF44577007CA049 /* TwitterManager */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TwitterManager;
+		};
+		AB3335A02EF5E0A2007CA049 /* CoreStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
