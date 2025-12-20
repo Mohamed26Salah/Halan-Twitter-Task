@@ -76,7 +76,6 @@ extension HalanTwitterViewModel {
                     isUserLoggedIn = true
                 }
             } catch {
-                AlertManager.show(message: "SomeThing Went Wrong!")
                 await MainActor.run {
                     isUserLoggedIn = false
                 }
