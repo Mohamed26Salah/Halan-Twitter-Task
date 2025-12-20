@@ -28,6 +28,18 @@ public struct TwitterOAuthPresentationContextProvider: TwitterOAuthPresentationC
         if let anchor = anchor {
             return anchor
         }
+        
+        // Ensure UIKit access happens on main thread
+        if Thread.isMainThread {
+            return getKeyWindow()
+        } else {
+            return DispatchQueue.main.sync {
+                getKeyWindow()
+            }
+        }
+    }
+    
+    private func getKeyWindow() -> ASPresentationAnchor {
         if let window = UIApplication.shared
             .connectedScenes
             .compactMap({ $0 as? UIWindowScene })
@@ -40,6 +52,5 @@ public struct TwitterOAuthPresentationContextProvider: TwitterOAuthPresentationC
         return UIWindow()
     }
 }
-
 
 
