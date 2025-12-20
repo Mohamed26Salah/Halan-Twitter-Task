@@ -90,9 +90,10 @@ extension LoggedInView {
     var postTweetButtonView: some View {
         PrimaryButton(
             isEnabled: $viewModel.isPostTweetButtonEnabled,
+            isLoading: $viewModel.isPostTweetButtonLoading,
             title: Texts.post
         ) {
-//            viewModel.postTweet()
+            viewModel.postTweet()
         }
     }
 }

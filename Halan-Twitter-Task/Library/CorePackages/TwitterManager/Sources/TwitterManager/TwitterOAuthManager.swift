@@ -15,6 +15,7 @@ public class TwitterOAuthManager: NSObject {
     @Injected(\.oauthURLBuilder) private var urlBuilder
     @Injected(\.tokenExchanger) private var tokenExchanger
     @Injected(\.presentationContextProvider) private var presentationContextProvider
+    @Injected(\.twitterTweetPoster) private var tweetPoster
 
     // MARK: - Properties
     private let clientId: String
@@ -192,6 +193,18 @@ public class TwitterOAuthManager: NSObject {
         userDefaults.removeObject(forKey: .authToken)
         userDefaults.removeObject(forKey: .refreshToken)
         userDefaults.removeObject(forKey: .tokenExpirationDate)
+    }
+    
+    /// Posts a tweet to Twitter
+    /// - Parameter text: The text content of the tweet
+    /// - Returns: TweetResponse containing the posted tweet ID
+    /// - Throws: TwitterOAuthError if posting fails
+    public func postTweet(text: String) async throws -> TweetResponse {
+        // Ensure token is valid and refreshed if needed
+        let accessToken = try await getAccessToken()
+        
+        // Post the tweet
+        return try await tweetPoster.postTweet(text: text, accessToken: accessToken)
     }
 }
 

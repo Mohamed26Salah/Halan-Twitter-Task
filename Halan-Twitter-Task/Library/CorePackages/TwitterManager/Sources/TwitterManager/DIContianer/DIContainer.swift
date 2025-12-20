@@ -48,4 +48,11 @@ public extension Container {
             TwitterOAuthPresentationContextProvider()
         }
     }
+    
+    /// Twitter Tweet Poster factory
+    var twitterTweetPoster: Factory<TwitterTweetPosterProtocol> {
+        Factory(self) {
+            TwitterTweetPoster()
+        }
+    }
 }

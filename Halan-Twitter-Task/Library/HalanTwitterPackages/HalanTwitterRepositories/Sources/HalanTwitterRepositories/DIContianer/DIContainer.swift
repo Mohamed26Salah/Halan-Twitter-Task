@@ -14,5 +14,9 @@ public extension Container {
         Container.shared.twitterAuthRepository.register {
             TwitterAuthRepository()
         }
+        
+        Container.shared.twitterTweetRepository.register {
+            TwitterTweetRepository()
+        }
     }
 }

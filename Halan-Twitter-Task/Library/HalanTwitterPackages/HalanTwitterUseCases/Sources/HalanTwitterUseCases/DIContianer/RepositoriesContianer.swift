@@ -12,4 +12,9 @@ public extension Container {
         Factory(self) { fatalError("Implementation for TwitterAuthRepositoryProtocol must be provided by higher layer")
         }
     }
+    
+    var twitterTweetRepository: Factory<TwitterTweetRepositoryProtocol> {
+        Factory(self) { fatalError("Implementation for TwitterTweetRepositoryProtocol must be provided by higher layer")
+        }
+    }
 }

@@ -16,6 +16,7 @@ import UIKit
 public class HalanTwitterViewModel: ObservableObject {
     @Injected(\.authenticateUserUseCase) private var authenticateUserUseCase
     @Injected(\.countTweetCharactersUseCase) private var countTweetCharactersUseCase
+    @Injected(\.postTweetUseCase) private var postTweetUseCase
     
     ///A Flag indicating if user is logged in or his session is still active
     @Published var isUserLoggedIn: Bool
@@ -38,6 +39,9 @@ public class HalanTwitterViewModel: ObservableObject {
     ///A Flag indicating if the post tweet button should be enabled(0> or =280) or disabled (=0 or >280)
     @Published var isPostTweetButtonEnabled: Bool
     
+    ///A Flag indicating if the post tweet button should show loading state
+    @Published var isPostTweetButtonLoading: Bool
+    
     private var cancellables = Set<AnyCancellable>()
     let maxCharacterLimit = 280
 
@@ -49,6 +53,7 @@ public class HalanTwitterViewModel: ObservableObject {
         tweetCharacterCount = nil
         tweetCharacterLimit = maxCharacterLimit
         isPostTweetButtonEnabled = false
+        isPostTweetButtonLoading = false
         setupTweetTextSubscription()
     }
 }
@@ -105,6 +110,31 @@ extension HalanTwitterViewModel {
                 await MainActor.run {
                     isTwitterLogInButtonEnabled = true
                     isTwitterLogInButtonLoading = false
+                }
+            }
+        }
+    }
+    /// Post the tweet to Twitter
+    func postTweet() {
+        guard !tweetText.isEmpty, isPostTweetButtonEnabled else { return }
+        
+        isPostTweetButtonLoading = true
+        isPostTweetButtonEnabled = false
+        
+        Task {
+            do {
+                let _ = try await postTweetUseCase.execute(text: tweetText)
+                await MainActor.run {
+                    isPostTweetButtonLoading = false
+                    AlertManager.show(title: "Success", message: "Tweet posted successfully!")
+                    // Clear the text after successful post
+                    clearTweetText()
+                }
+            } catch {
+                await MainActor.run {
+                    isPostTweetButtonLoading = false
+                    isPostTweetButtonEnabled = true
+                    AlertManager.show(title: "Error", message: "Failed to post tweet. Please try again.")
                 }
             }
         }
