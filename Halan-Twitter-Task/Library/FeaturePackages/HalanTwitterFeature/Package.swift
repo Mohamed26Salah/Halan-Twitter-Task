@@ -17,7 +17,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
-        .package(path: "../../HalanTwitterUseCases")
+        .package(path: "../../HalanTwitterUseCases"),
+        .package(path: "../../CoreUI")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -26,7 +27,8 @@ let package = Package(
             name: "HalanTwitterFeature",
             dependencies: [
                 .product(name: "Factory", package: "Factory"),
-                .product(name: "HalanTwitterUseCases", package: "HalanTwitterUseCases")
+                .product(name: "HalanTwitterUseCases", package: "HalanTwitterUseCases"),
+                .product(name: "CoreUI", package: "CoreUI")
             ]
         ),
         .testTarget(

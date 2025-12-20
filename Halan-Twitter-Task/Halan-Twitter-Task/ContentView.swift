@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import HalanTwitterUseCases
-import Factory
+
 
 struct ContentView: View {
-    @Injected(\.authenticateUserUseCase) private var authenticateUserUseCase
 
     var body: some View {
         VStack {
@@ -20,14 +18,6 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .task {
-            do {
-                try await authenticateUserUseCase.execute()
-            } catch {
-                print("Error: \(error)")
-            }
-        }
-        
     }
 }
 

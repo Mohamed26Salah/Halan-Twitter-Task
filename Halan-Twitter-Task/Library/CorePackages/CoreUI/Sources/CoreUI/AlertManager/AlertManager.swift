@@ -10,8 +10,8 @@ import Combine
 import SwiftUI
 import UIKit
 
-class AlertManager {
-    static func show(
+public class AlertManager {
+    public static func show(
         title: String = "error",
         message: String,
         primaryButtonTitle: String = "ok",

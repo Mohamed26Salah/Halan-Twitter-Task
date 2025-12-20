@@ -17,5 +17,9 @@ public class TwitterAuthRepository: TwitterAuthRepositoryProtocol {
     public func authenticate() async throws {
         try await oauthManager.authenticate()
     }
+    
+    public func checkIfAccessTokenExist() async throws -> String  {
+        try await oauthManager.getAccessToken()
+    }
 }
 
