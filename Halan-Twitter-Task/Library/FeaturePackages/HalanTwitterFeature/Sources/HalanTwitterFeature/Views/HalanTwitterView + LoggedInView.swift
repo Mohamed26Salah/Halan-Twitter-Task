@@ -9,15 +9,16 @@ import SwiftUI
 import CoreUI
 
 struct LoggedInView: View {
-//    @ObservedObject var viewModel: HalanTwitterViewModel
+    @ObservedObject var viewModel: HalanTwitterViewModel
     
     var body: some View {
         VStack(spacing: Layout.verticalSpacing) {
             twitterLogo
+            
             characterCountersView
             
             TweetTextEditorView(
-                text: .constant(""),
+                text: $viewModel.tweetText,
                 placeholder: Texts.editorPlaceholder
             )
             .frame(height: Sizes.editorHeight)
@@ -47,14 +48,14 @@ extension LoggedInView {
         HStack(spacing: Spacing.counters) {
             CharacterCounterView(
                 title: Texts.typed,
-                maxCount: .constant(280),
-                typedCount: .constant(0) /*$viewModel.typedCharacters*/
+                maxCount: .constant(viewModel.maxCharacterLimit),
+                typedCount: $viewModel.tweetCharacterCount
             )
             
             CharacterCounterView(
                 title: Texts.remaining,
-                maxCount: .constant(280),
-                typedCount: .constant(0) /*$viewModel.remainingCharacters*/
+                maxCount: $viewModel.tweetCharacterLimit,
+                typedCount: .constant(nil)
             )
         }
         .padding(.bottom, Spacing.section)
@@ -88,6 +89,7 @@ extension LoggedInView {
     
     var postTweetButtonView: some View {
         PrimaryButton(
+            isEnabled: $viewModel.isPostTweetButtonEnabled,
             title: Texts.post
         ) {
 //            viewModel.postTweet()
@@ -130,6 +132,6 @@ private extension LoggedInView {
 }
 
 
-#Preview {
-    LoggedInView()
-}
+//#Preview {
+//    LoggedInView()
+//}

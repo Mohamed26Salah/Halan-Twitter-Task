@@ -20,8 +20,7 @@ public struct HalanTwitterView: View {
         NavigationStack {
             Group {
                 if viewModel.isUserLoggedIn {
-//                    LoggedInView
-                    Text("User is Logged in")
+                    LoggedInView(viewModel: viewModel)
                 } else {
                     SignInButtonView
                 }

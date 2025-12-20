@@ -14,4 +14,11 @@ public extension Container {
             AuthenticateUserUseCase()
         }
     }
+    
+    /// Count Tweet Characters Use Case factory
+    var countTweetCharactersUseCase: Factory<CountTweetCharactersUseCaseProtocol> {
+        Factory(self) {
+            CountTweetCharactersUseCase()
+        }
+    }
 }

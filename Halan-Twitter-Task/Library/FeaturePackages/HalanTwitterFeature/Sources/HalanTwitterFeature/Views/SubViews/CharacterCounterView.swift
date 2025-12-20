@@ -86,6 +86,6 @@ private extension CharacterCounterView {
     CharacterCounterView(
         title: "Salah",
         maxCount: .constant(280),
-        typedCount: .constant(0),
+        typedCount: .constant(nil),
     )
 }
