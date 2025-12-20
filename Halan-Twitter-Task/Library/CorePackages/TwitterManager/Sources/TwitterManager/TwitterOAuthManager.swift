@@ -187,6 +187,12 @@ public class TwitterOAuthManager: NSObject {
         
         return accessToken
     }
+    
+    public func deleteAccessToken() {
+        userDefaults.removeObject(forKey: .authToken)
+        userDefaults.removeObject(forKey: .refreshToken)
+        userDefaults.removeObject(forKey: .tokenExpirationDate)
+    }
 }
 
 // MARK: - ASWebAuthenticationPresentationContextProviding

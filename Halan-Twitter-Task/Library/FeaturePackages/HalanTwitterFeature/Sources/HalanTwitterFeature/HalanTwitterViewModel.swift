@@ -12,12 +12,14 @@ import Factory
 import HalanTwitterUseCases
 import CoreUI
 
-class HalanTwitterViewModel: ObservableObject {
+public class HalanTwitterViewModel: ObservableObject {
     @Injected(\.authenticateUserUseCase) private var authenticateUserUseCase
     
-    @Published var userIsLoggedIn: Bool = false
-    
-    init() {
+    @Published var isUserLoggedIn: Bool = false
+    @Published var isTwitterLogInButtonEnabled: Bool = true
+    @Published var isTwitterLogInButtonLoading: Bool = false
+
+    public init() {
         
     }
     
@@ -30,20 +32,49 @@ extension HalanTwitterViewModel {
     }
 }
 
-// MARK: - Check User State -
+// MARK: - User State -
 extension HalanTwitterViewModel {
     ///Check if user is logged in or not
     func checkIfUserTokenExist() {
         Task {
             do {
-               let token = try await authenticateUserUseCase.checkIfUserTokenIsValid()
+               let _ = try await authenticateUserUseCase.checkIfUserTokenIsValid()
                 await MainActor.run {
-                    userIsLoggedIn = true
+                    isUserLoggedIn = true
                 }
             } catch {
                 AlertManager.show(message: "SomeThing Went Wrong!")
                 await MainActor.run {
-                    userIsLoggedIn = false
+                    isUserLoggedIn = false
+                }
+            }
+        }
+    }
+    
+    func logOut() {
+        authenticateUserUseCase.logOutUser()
+        isUserLoggedIn = false
+    }
+}
+
+// MARK: - Twitter Api Calls -
+extension HalanTwitterViewModel {
+    func authenticateUser() {
+        isTwitterLogInButtonEnabled = false
+        isTwitterLogInButtonLoading = true
+        Task {
+            do {
+                try await authenticateUserUseCase.execute()
+                await MainActor.run {
+                    isTwitterLogInButtonLoading = false
+                    isUserLoggedIn = true
+                    isTwitterLogInButtonEnabled = true
+                }
+            } catch {
+                AlertManager.show(message: "Failed To Sign In!")
+                await MainActor.run {
+                    isTwitterLogInButtonEnabled = true
+                    isTwitterLogInButtonLoading = false
                 }
             }
         }

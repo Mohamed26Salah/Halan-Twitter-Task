@@ -21,5 +21,10 @@ public class TwitterAuthRepository: TwitterAuthRepositoryProtocol {
     public func checkIfAccessTokenExist() async throws -> String  {
         try await oauthManager.getAccessToken()
     }
+    
+    public func deleteAccessToken() {
+        oauthManager.deleteAccessToken()
+    }
+    
 }
 

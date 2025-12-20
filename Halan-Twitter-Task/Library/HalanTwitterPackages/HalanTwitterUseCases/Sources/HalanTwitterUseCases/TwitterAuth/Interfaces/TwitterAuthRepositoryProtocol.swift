@@ -11,4 +11,5 @@ import Foundation
 public protocol TwitterAuthRepositoryProtocol {
     func authenticate() async throws
     func checkIfAccessTokenExist() async throws -> String
+    func deleteAccessToken()
 }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct PrimaryButton: View {
+public struct PrimaryButton: View {
     @Binding var isEnabled: Bool
     @Binding var isLoading: Bool
     var title: String
@@ -41,7 +41,7 @@ struct PrimaryButton: View {
         self.action = action
     }
     
-    var body: some View {
+    public var body: some View {
         Button {
             action()
         } label: {
@@ -58,6 +58,7 @@ struct PrimaryButton: View {
             .background(backgroundColor.opacity(isEnabled ? 1.0 : 0.5))
             .cornerRadius(cornerRadius)
         }
+        .disabled(!isEnabled)
     }
 }
 

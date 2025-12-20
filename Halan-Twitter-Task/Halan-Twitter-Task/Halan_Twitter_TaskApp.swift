@@ -7,14 +7,14 @@
 
 import SwiftUI
 import Factory
-
+import HalanTwitterFeature
 @main
 struct Halan_Twitter_TaskApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HalanTwitterView()
         }
     }
 }

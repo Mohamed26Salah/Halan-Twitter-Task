@@ -12,6 +12,7 @@ import Factory
 public protocol AuthenticateUserUseCaseProtocol {
     func execute() async throws
     func checkIfUserTokenIsValid() async throws -> String
+    func logOutUser()
 }
 
 /// Use case for authenticating a user with Twitter
@@ -25,6 +26,10 @@ public class AuthenticateUserUseCase: AuthenticateUserUseCaseProtocol {
     
     public func checkIfUserTokenIsValid() async throws -> String {
         try await authRepository.checkIfAccessTokenExist()
+    }
+    
+    public func logOutUser() {
+        authRepository.deleteAccessToken()
     }
 }
 
