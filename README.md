@@ -13,8 +13,8 @@ The app allows users to:
 - View a **real-time tweet character counter** that follows Twitter’s counting logic
 
 ---
-![Sign In](Screenshots/1.png)
-![Tweet Counter + poster](Screenshots/2.png)
+![Sign In](ScreenShots/1.png)
+![Tweet Counter + poster](ScreenShots/2.png)
 
 ## ✨ Features
 
