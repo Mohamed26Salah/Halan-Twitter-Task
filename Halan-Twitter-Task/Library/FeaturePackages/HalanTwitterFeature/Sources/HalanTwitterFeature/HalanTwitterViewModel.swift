@@ -11,6 +11,7 @@ import Combine
 import Factory
 import HalanTwitterUseCases
 import CoreUI
+import UIKit
 
 public class HalanTwitterViewModel: ObservableObject {
     @Injected(\.authenticateUserUseCase) private var authenticateUserUseCase
@@ -138,3 +139,21 @@ extension HalanTwitterViewModel {
             .store(in: &cancellables)
     }
 }
+
+//MARK: - Post A Tweet Helper Functions -
+extension HalanTwitterViewModel {
+    /// Copy the tweet text to the clipboard
+    func copyText() {
+        UIPasteboard.general.string = tweetText
+        AlertManager.show(title: "Done", message: "Text copied to clipboard!")
+    }
+    
+    /// Clear the tweet text
+    func clearTweetText() {
+        self.tweetText = ""
+        self.tweetCharacterCount = 0
+        self.tweetCharacterLimit = maxCharacterLimit
+        self.isPostTweetButtonEnabled = false
+    }
+}
+

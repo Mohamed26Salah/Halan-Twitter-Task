@@ -74,7 +74,7 @@ extension LoggedInView {
             title: Texts.copy,
             backgroundColor: Colors.copyButton
         ) {
-//            viewModel.copyText()
+            viewModel.copyText()
         }
     }
     
@@ -83,7 +83,7 @@ extension LoggedInView {
             title: Texts.clear,
             backgroundColor: Colors.clearButton
         ) {
-//            viewModel.clearText()
+            viewModel.clearTweetText()
         }
     }
     
