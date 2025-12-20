@@ -15,12 +15,19 @@ import CoreUI
 public class HalanTwitterViewModel: ObservableObject {
     @Injected(\.authenticateUserUseCase) private var authenticateUserUseCase
     
-    @Published var isUserLoggedIn: Bool = false
-    @Published var isTwitterLogInButtonEnabled: Bool = true
-    @Published var isTwitterLogInButtonLoading: Bool = false
+    ///A Flag indicating if user is logged in or his session is still active
+    @Published var isUserLoggedIn: Bool
+    
+    ///A Flag indicating if the sign in button should be enabled or not
+    @Published var isTwitterLogInButtonEnabled: Bool
+    
+    ///A Flag indicating if the sign in button should show loaded or not
+    @Published var isTwitterLogInButtonLoading: Bool
 
     public init() {
-        
+        isUserLoggedIn = false
+        isTwitterLogInButtonEnabled = true
+        isTwitterLogInButtonLoading = false
     }
     
 }
@@ -51,6 +58,7 @@ extension HalanTwitterViewModel {
         }
     }
     
+    ///Log out user and delete the cached token
     func logOut() {
         authenticateUserUseCase.logOutUser()
         isUserLoggedIn = false
@@ -59,6 +67,7 @@ extension HalanTwitterViewModel {
 
 // MARK: - Twitter Api Calls -
 extension HalanTwitterViewModel {
+    ///Start the authentication with twitter and cache the token
     func authenticateUser() {
         isTwitterLogInButtonEnabled = false
         isTwitterLogInButtonLoading = true
