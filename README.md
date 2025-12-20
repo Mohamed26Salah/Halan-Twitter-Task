@@ -25,6 +25,7 @@ The app allows users to:
 - Accurate tweet character counting
   - URLs counted using Twitter rules
   - Emoji & Unicode-aware
+  - Manage tweet text (copy + clear)
 - Clean, testable architecture
 - Unit tests for core logic
 
