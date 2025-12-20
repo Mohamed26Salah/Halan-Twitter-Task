@@ -27,16 +27,17 @@ public struct HalanTwitterView: View {
             }
             .navigationTitle("Twitter")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        viewModel.logOut()
-                    }, label: {
-                        Text("Log Out")
-                            .foregroundColor(.red)
-                            .opacity(viewModel.isUserLoggedIn ? 1.0 : 0.0)
-                    })
-                    .disabled(!viewModel.isUserLoggedIn)
+                if viewModel.isUserLoggedIn {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            viewModel.logOut()
+                        }, label: {
+                            Text("Log Out")
+                                .foregroundColor(.red)
+                        })
+                    }
                 }
+                
             }
         }
         .onAppear {
